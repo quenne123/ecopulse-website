@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Présentez votre candidature à la deuxième édition du programme TREES d’EcoPulse Foundation.">
+  <title>Candidature TREES — 2e édition | EcoPulse Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand brand-logo-link" href="index.html" aria-label="EcoPulse — accueil">
+        <img class="site-logo" src="assets/ecopulse-logo.png" alt="EcoPulse Foundation">
+      </a>
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+      <nav id="primary-nav" class="primary-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="programmes.html">Programmes</a>
+        <a href="index.html#actualites">Actualités</a>
+        <a href="application.html" class="active">Candidature TREES</a>
+        <a class="button button-small" href="https://gofund.me/3133bdc82" target="_blank" rel="noopener noreferrer">Faire un don</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="application-page">
+    <section class="application-hero">
+      <div class="application-hero-shape shape-one" aria-hidden="true"></div>
+      <div class="application-hero-shape shape-two" aria-hidden="true"></div>
+      <div class="container application-hero-grid">
+        <div class="application-hero-copy reveal">
+          <p class="eyebrow">Programme TREES · Deuxième édition</p>
+          <h1>Transformez vos idées en <span>actions durables.</span></h1>
+          <p>EcoPulse recherche des jeunes motivés à apprendre, collaborer et développer des solutions concrètes pour leurs communautés.</p>
+          <div class="application-highlights" aria-label="Informations essentielles">
+            <div><strong>Formation</strong><span>Environnement et leadership</span></div>
+            <div><strong>Pratique</strong><span>Ateliers et actions communautaires</span></div>
+            <div><strong>Impact</strong><span>Solutions adaptées au contexte local</span></div>
+          </div>
+        </div>
+        <div class="application-logo-card reveal">
+          <img src="assets/trees-logo.png" alt="Logo du programme TREES">
+          <p>Training for a Resilient Environment and Empowered Solutions</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="application-section">
+      <div class="container application-layout">
+        <aside class="application-aside reveal">
+          <p class="section-kicker">Avant de commencer</p>
+          <h2>Votre candidature</h2>
+          <p>Prévoyez environ 10 à 15 minutes. Répondez avec précision et authenticité. Les réponses sont enregistrées dans le compte Google privé d’EcoPulse et transmises à l’équipe par courriel.</p>
+          <div class="application-process">
+            <div><span>01</span><p><strong>Remplissez le formulaire</strong><br>Présentez votre parcours et votre motivation.</p></div>
+            <div><span>02</span><p><strong>Étude des candidatures</strong><br>L’équipe examine chaque dossier selon les critères du programme.</p></div>
+            <div><span>03</span><p><strong>Communication</strong><br>Les candidats retenus reçoivent les prochaines étapes par téléphone ou courriel.</p></div>
+          </div>
+          <div class="privacy-note">
+            <strong>Confidentialité</strong>
+            <p>Ne transmettez pas de mot de passe, de numéro bancaire ou de document d’identité dans ce formulaire.</p>
+          </div>
+        </aside>
+
+        <div class="application-form-card reveal">
+          <div class="form-heading">
+            <p class="section-kicker">Formulaire officiel</p>
+            <h2>Candidature TREES</h2>
+            <p>Les champs marqués d’un astérisque sont obligatoires.</p>
+          </div>
+
+          <!-- Remplacez la valeur action par l'URL /exec de votre déploiement Google Apps Script. -->
+          <form id="trees-application-form"
+                class="application-form"
+                action="YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL"
+                method="post"
+                target="submission-frame">
+
+            <input class="form-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <fieldset>
+              <legend>1. Informations personnelles</legend>
+              <div class="form-grid two-columns">
+                <label>Nom complet *
+                  <input type="text" name="fullName" autocomplete="name" required maxlength="120">
+                </label>
+                <label>Date de naissance *
+                  <input type="date" name="birthDate" required>
+                </label>
+                <label>Genre
+                  <select name="gender">
+                    <option value="">Sélectionnez</option>
+                    <option>Femme</option>
+                    <option>Homme</option>
+                    <option>Autre / préfère ne pas répondre</option>
+                  </select>
+                </label>
+                <label>Ville ou commune *
+                  <input type="text" name="city" required maxlength="100">
+                </label>
+                <label>Département *
+                  <select name="department" required>
+                    <option value="">Sélectionnez</option>
+                    <option>Artibonite</option><option>Centre</option><option>Grand’Anse</option><option>Nippes</option><option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Ouest</option><option>Sud</option><option>Sud-Est</option>
+                  </select>
+                </label>
+                <label>Téléphone *
+                  <input type="tel" name="phone" autocomplete="tel" required maxlength="30" placeholder="Ex. +509 ...">
+                </label>
+                <label>WhatsApp
+                  <input type="tel" name="whatsapp" maxlength="30" placeholder="Laissez vide si identique">
+                </label>
+                <label>Adresse courriel *
+                  <input type="email" name="email" autocomplete="email" required maxlength="160">
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>2. Études et expérience</legend>
+              <div class="form-grid two-columns">
+                <label>Niveau d’études actuel *
+                  <select name="educationLevel" required>
+                    <option value="">Sélectionnez</option>
+                    <option>Secondaire</option><option>Formation professionnelle</option><option>Université</option><option>Diplômé(e)</option><option>Autre</option>
+                  </select>
+                </label>
+                <label>École, université ou organisation
+                  <input type="text" name="school" maxlength="160">
+                </label>
+              </div>
+              <label>Avez-vous déjà participé à une activité environnementale, communautaire ou de leadership ? *
+                <textarea name="previousExperience" required minlength="40" maxlength="1200" rows="5" placeholder="Décrivez brièvement votre rôle et ce que vous avez appris."></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>3. Motivation et engagement</legend>
+              <label>Pourquoi souhaitez-vous participer à la deuxième édition de TREES ? *
+                <textarea name="motivation" required minlength="100" maxlength="1800" rows="7" placeholder="Expliquez votre motivation, vos objectifs et ce que vous apporterez au groupe."></textarea>
+                <span class="field-help">Minimum recommandé : 100 caractères.</span>
+              </label>
+              <label>Quel problème environnemental affecte le plus votre communauté et quelle solution proposeriez-vous ? *
+                <textarea name="communityChallenge" required minlength="100" maxlength="1800" rows="7"></textarea>
+              </label>
+              <div class="form-grid two-columns">
+                <label>Êtes-vous disponible pendant toute la durée du programme ? *
+                  <select name="availability" required>
+                    <option value="">Sélectionnez</option>
+                    <option>Oui</option><option>Non</option><option>À confirmer</option>
+                  </select>
+                </label>
+                <label>Comment avez-vous entendu parler de TREES ?
+                  <select name="referral">
+                    <option value="">Sélectionnez</option>
+                    <option>Facebook</option><option>Instagram</option><option>LinkedIn</option><option>École ou université</option><option>Ami(e) ou famille</option><option>Ancien participant</option><option>Autre</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="consent-fieldset">
+              <legend>4. Déclarations</legend>
+              <label class="checkbox-label"><input type="checkbox" name="commitment" value="Oui" required><span>Je confirme que les informations fournies sont exactes et je m’engage à participer activement si je suis sélectionné(e). *</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="minorConsent" value="Oui" required><span>Je comprends qu’une autorisation parentale ou du responsable légal pourra être demandée aux participants mineurs. *</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="privacyConsent" value="Oui" required><span>J’autorise EcoPulse Foundation à utiliser ces informations uniquement pour gérer ma candidature au programme TREES. *</span></label>
+            </fieldset>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+            <button class="button application-submit" type="submit">Envoyer ma candidature</button>
+          </form>
+          <iframe name="submission-frame" id="submission-frame" title="Réponse de soumission" hidden></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <a class="brand footer-brand brand-logo-link" href="index.html" aria-label="EcoPulse — accueil"><img class="site-logo footer-logo" src="assets/ecopulse-logo.png" alt="EcoPulse Foundation"></a>
+      <p>© <span id="year"></span> EcoPulse Foundation. Tous droits réservés.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=61576944591762" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.linkedin.com/company/ecopulse-foundation/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.instagram.com/ecopulsefoundation/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="back-to-top" href="#top" aria-label="Retour en haut">↑</a>
+  <script src="js/script.js"></script>
+  <script src="js/application.js"></script>
+</body>
+</html>
