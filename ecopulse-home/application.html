@@ -12,7 +12,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
-
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a class="brand brand-logo-link" href="index.html" aria-label="EcoPulse — accueil">
@@ -40,9 +39,9 @@
           <h1>Transformez vos idées en <span>actions durables.</span></h1>
           <p>EcoPulse recherche des jeunes motivés à apprendre, collaborer et développer des solutions concrètes pour leurs communautés.</p>
           <div class="application-highlights" aria-label="Informations essentielles">
-            <div><strong>Formation</strong><span>Environnement et leadership</span></div>
-            <div><strong>Pratique</strong><span>Ateliers et actions communautaires</span></div>
-            <div><strong>Impact</strong><span>Solutions adaptées au contexte local</span></div>
+            <div><strong>Dates</strong><span>18 au 20 septembre</span></div>
+            <div><strong>Lieu</strong><span>Jérémie, Grand’Anse</span></div>
+            <div><strong>Horaire</strong><span>À communiquer prochainement</span></div>
           </div>
         </div>
         <div class="application-logo-card reveal">
@@ -57,15 +56,15 @@
         <aside class="application-aside reveal">
           <p class="section-kicker">Avant de commencer</p>
           <h2>Votre candidature</h2>
-          <p>Prévoyez environ 10 à 15 minutes. Répondez avec précision et authenticité. Les réponses sont enregistrées dans le compte Google privé d’EcoPulse et transmises à l’équipe par courriel.</p>
+          <p>Prévoyez environ 10 à 15 minutes. Vous pouvez répondre aux questions ouvertes en français ou en créole haïtien.</p>
           <div class="application-process">
-            <div><span>01</span><p><strong>Remplissez le formulaire</strong><br>Présentez votre parcours et votre motivation.</p></div>
+            <div><span>01</span><p><strong>Remplissez le formulaire</strong><br>Présentez votre parcours, vos idées et votre motivation.</p></div>
             <div><span>02</span><p><strong>Étude des candidatures</strong><br>L’équipe examine chaque dossier selon les critères du programme.</p></div>
             <div><span>03</span><p><strong>Communication</strong><br>Les candidats retenus reçoivent les prochaines étapes par téléphone ou courriel.</p></div>
           </div>
           <div class="privacy-note">
             <strong>Confidentialité</strong>
-            <p>Ne transmettez pas de mot de passe, de numéro bancaire ou de document d’identité dans ce formulaire.</p>
+            <p>Les réponses seront enregistrées dans le compte Google privé d’EcoPulse et utilisées uniquement pour la gestion de cette candidature. Ne transmettez aucun mot de passe, numéro bancaire ou document d’identité.</p>
           </div>
         </aside>
 
@@ -76,101 +75,146 @@
             <p>Les champs marqués d’un astérisque sont obligatoires.</p>
           </div>
 
-          <!-- Remplacez la valeur action par l'URL /exec de votre déploiement Google Apps Script. -->
-          <form id="trees-application-form"
-                class="application-form"
+          <form id="trees-application-form" class="application-form"
                 action="YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL"
-                method="post"
-                target="submission-frame">
-
+                method="post" target="submission-frame">
             <input class="form-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="age" id="calculated-age">
 
             <fieldset>
               <legend>1. Informations personnelles</legend>
               <div class="form-grid two-columns">
-                <label>Nom complet *
-                  <input type="text" name="fullName" autocomplete="name" required maxlength="120">
-                </label>
-                <label>Date de naissance *
-                  <input type="date" name="birthDate" required>
-                </label>
-                <label>Genre
+                <label>Prénom *<input type="text" name="firstName" autocomplete="given-name" required maxlength="80"></label>
+                <label>Nom de famille *<input type="text" name="lastName" autocomplete="family-name" required maxlength="80"></label>
+                <label>Date de naissance *<input type="date" name="birthDate" id="birth-date" required></label>
+                <label>Sexe
                   <select name="gender">
-                    <option value="">Sélectionnez</option>
-                    <option>Femme</option>
-                    <option>Homme</option>
-                    <option>Autre / préfère ne pas répondre</option>
+                    <option value="">Sélectionnez</option><option>Femme</option><option>Homme</option>
+                    <option>Autre</option><option>Préfère ne pas répondre</option>
                   </select>
                 </label>
-                <label>Ville ou commune *
-                  <input type="text" name="city" required maxlength="100">
-                </label>
-                <label>Département *
+                <label>Ville d’origine *<input type="text" name="originCity" required maxlength="100"></label>
+                <label>Ville de résidence actuelle *<input type="text" name="currentCity" required maxlength="100"></label>
+                <label>Département de résidence *
                   <select name="department" required>
                     <option value="">Sélectionnez</option>
-                    <option>Artibonite</option><option>Centre</option><option>Grand’Anse</option><option>Nippes</option><option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Ouest</option><option>Sud</option><option>Sud-Est</option>
+                    <option>Artibonite</option><option>Centre</option><option>Grand’Anse</option><option>Nippes</option>
+                    <option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Ouest</option>
+                    <option>Sud</option><option>Sud-Est</option><option>Réside hors d’Haïti</option>
                   </select>
                 </label>
-                <label>Téléphone *
-                  <input type="tel" name="phone" autocomplete="tel" required maxlength="30" placeholder="Ex. +509 ...">
-                </label>
-                <label>WhatsApp
-                  <input type="tel" name="whatsapp" maxlength="30" placeholder="Laissez vide si identique">
-                </label>
-                <label>Adresse courriel *
-                  <input type="email" name="email" autocomplete="email" required maxlength="160">
-                </label>
+                <label>Adresse courriel *<input type="email" name="email" autocomplete="email" required maxlength="160"></label>
+                <label>Numéro de téléphone *<input type="tel" name="phone" autocomplete="tel" required maxlength="30" placeholder="Ex. +509 ..."></label>
+                <label>Numéro WhatsApp<input type="tel" name="whatsapp" maxlength="30" placeholder="Laissez vide s’il est identique"></label>
               </div>
             </fieldset>
 
             <fieldset>
-              <legend>2. Études et expérience</legend>
+              <legend>2. Études et parcours</legend>
               <div class="form-grid two-columns">
-                <label>Niveau d’études actuel *
+                <label>Niveau scolaire actuel ou plus haut niveau atteint *
                   <select name="educationLevel" required>
-                    <option value="">Sélectionnez</option>
-                    <option>Secondaire</option><option>Formation professionnelle</option><option>Université</option><option>Diplômé(e)</option><option>Autre</option>
+                    <option value="">Sélectionnez</option><option>Fondamental</option><option>Secondaire</option>
+                    <option>Formation professionnelle ou technique</option><option>Études universitaires en cours</option>
+                    <option>Diplôme universitaire obtenu</option><option>Autre</option>
                   </select>
                 </label>
-                <label>École, université ou organisation
-                  <input type="text" name="school" maxlength="160">
+                <label>École, université ou établissement<input type="text" name="school" maxlength="160"></label>
+                <label>Domaine d’études ou de formation<input type="text" name="studyField" maxlength="160"></label>
+                <label>Langue préférée *
+                  <select name="preferredLanguage" required>
+                    <option value="">Sélectionnez</option><option value="Français">Français</option>
+                    <option value="Kreyòl ayisyen">Kreyòl ayisyen</option>
+                  </select>
                 </label>
               </div>
-              <label>Avez-vous déjà participé à une activité environnementale, communautaire ou de leadership ? *
-                <textarea name="previousExperience" required minlength="40" maxlength="1200" rows="5" placeholder="Décrivez brièvement votre rôle et ce que vous avez appris."></textarea>
+              <label>Avez-vous déjà participé à une activité communautaire, environnementale, éducative ou bénévole ? *
+                <select name="hasExperience" id="has-experience" required>
+                  <option value="">Sélectionnez</option><option value="Oui">Oui</option><option value="Non">Non</option>
+                </select>
+              </label>
+              <label id="experience-details-wrapper" hidden>Si oui, décrivez brièvement votre expérience
+                <textarea name="previousExperience" id="experience-details" maxlength="1200" rows="5" placeholder="Décrivez l’activité, votre rôle et ce que vous avez appris."></textarea>
               </label>
             </fieldset>
 
             <fieldset>
-              <legend>3. Motivation et engagement</legend>
-              <label>Pourquoi souhaitez-vous participer à la deuxième édition de TREES ? *
-                <textarea name="motivation" required minlength="100" maxlength="1800" rows="7" placeholder="Expliquez votre motivation, vos objectifs et ce que vous apporterez au groupe."></textarea>
-                <span class="field-help">Minimum recommandé : 100 caractères.</span>
-              </label>
-              <label>Quel problème environnemental affecte le plus votre communauté et quelle solution proposeriez-vous ? *
-                <textarea name="communityChallenge" required minlength="100" maxlength="1800" rows="7"></textarea>
-              </label>
+              <legend>3. Programme, disponibilité et déplacement</legend>
               <div class="form-grid two-columns">
-                <label>Êtes-vous disponible pendant toute la durée du programme ? *
-                  <select name="availability" required>
-                    <option value="">Sélectionnez</option>
-                    <option>Oui</option><option>Non</option><option>À confirmer</option>
+                <label>Comment avez-vous entendu parler du programme TREES ? *
+                  <select name="heardAbout" required>
+                    <option value="">Sélectionnez</option><option>Facebook</option><option>Instagram</option>
+                    <option>LinkedIn</option><option>WhatsApp</option><option>École ou université</option>
+                    <option>Ami(e) ou membre de la famille</option><option>Ancien participant</option>
+                    <option>Bénévole EcoPulse</option><option>Partenaire ou organisation</option><option>Autre</option>
                   </select>
                 </label>
-                <label>Comment avez-vous entendu parler de TREES ?
-                  <select name="referral">
-                    <option value="">Sélectionnez</option>
-                    <option>Facebook</option><option>Instagram</option><option>LinkedIn</option><option>École ou université</option><option>Ami(e) ou famille</option><option>Ancien participant</option><option>Autre</option>
+                <label>Nom de la personne qui vous a référé(e)<input type="text" name="referrerName" maxlength="120" placeholder="Optionnel"></label>
+                <label>Êtes-vous disponible du 18 au 20 septembre ? *
+                  <select name="availability" required>
+                    <option value="">Sélectionnez</option><option value="Oui, les trois jours">Oui, les trois jours</option>
+                    <option value="Partiellement">Partiellement</option><option value="Non">Non</option>
+                  </select>
+                  <span class="field-help">L’horaire quotidien exact sera communiqué prochainement.</span>
+                </label>
+                <label>Résidez-vous actuellement à Jérémie ? *
+                  <select name="jeremieResident" id="jeremie-resident" required>
+                    <option value="">Sélectionnez</option><option value="Oui">Oui</option><option value="Non">Non</option>
                   </select>
                 </label>
               </div>
+              <label id="travel-wrapper" hidden>Si vous résidez dans une autre ville, pouvez-vous vous rendre à Jérémie pendant les trois jours ? *
+                <select name="canTravelToJeremie" id="can-travel">
+                  <option value="">Sélectionnez</option><option value="Oui">Oui</option><option value="Non">Non</option>
+                  <option value="Avec un soutien pour le transport ou l’hébergement">Avec un soutien pour le transport ou l’hébergement</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>4. Motivation et idées</legend>
+              <p class="field-help">Vous pouvez répondre en français ou en créole haïtien.</p>
+              <label>Pourquoi souhaitez-vous participer au programme TREES et qu’espérez-vous apprendre ou accomplir ? *
+                <textarea name="motivation" required minlength="100" maxlength="1800" rows="7"></textarea>
+              </label>
+              <label>Quelles sont, selon vous, les deux problématiques environnementales les plus urgentes dans votre communauté ? *
+                <textarea name="environmentalIssues" required minlength="100" maxlength="1800" rows="7"></textarea>
+              </label>
+              <label>Quelle action concrète aimeriez-vous réaliser dans votre communauté après le programme TREES ? *
+                <textarea name="communityAction" required minlength="80" maxlength="1500" rows="6"></textarea>
+              </label>
+              <label>Avez-vous un besoin particulier que l’équipe devrait connaître pour faciliter votre participation ?
+                <textarea name="specialNeeds" maxlength="800" rows="4" placeholder="Optionnel : accessibilité, alimentation, transport ou autre aménagement."></textarea>
+              </label>
+            </fieldset>
+
+            <fieldset id="minor-section" hidden>
+              <legend>5. Informations du parent ou responsable légal</legend>
+              <p class="field-help">Cette section est obligatoire uniquement pour les candidats de moins de 18 ans.</p>
+              <div class="form-grid two-columns">
+                <label>Nom complet du parent ou responsable *<input type="text" name="guardianName" id="guardian-name" maxlength="160"></label>
+                <label>Téléphone du parent ou responsable *<input type="tel" name="guardianPhone" id="guardian-phone" maxlength="30"></label>
+              </div>
+              <label class="checkbox-label">
+                <input type="checkbox" name="guardianConsent" id="guardian-consent" value="Oui">
+                <span>Le parent ou responsable légal autorise cette candidature et accepte d’être contacté par EcoPulse Foundation. *</span>
+              </label>
             </fieldset>
 
             <fieldset class="consent-fieldset">
-              <legend>4. Déclarations</legend>
-              <label class="checkbox-label"><input type="checkbox" name="commitment" value="Oui" required><span>Je confirme que les informations fournies sont exactes et je m’engage à participer activement si je suis sélectionné(e). *</span></label>
-              <label class="checkbox-label"><input type="checkbox" name="minorConsent" value="Oui" required><span>Je comprends qu’une autorisation parentale ou du responsable légal pourra être demandée aux participants mineurs. *</span></label>
-              <label class="checkbox-label"><input type="checkbox" name="privacyConsent" value="Oui" required><span>J’autorise EcoPulse Foundation à utiliser ces informations uniquement pour gérer ma candidature au programme TREES. *</span></label>
+              <legend>6. Déclarations et consentements</legend>
+              <label class="checkbox-label"><input type="checkbox" name="commitment" value="Oui" required>
+                <span>Je confirme que les informations fournies sont exactes et, si je suis sélectionné(e), je m’engage à participer activement au programme. *</span>
+              </label>
+              <label class="checkbox-label"><input type="checkbox" name="privacyConsent" value="Oui" required>
+                <span>J’autorise EcoPulse Foundation à utiliser ces informations uniquement pour évaluer et gérer ma candidature au programme TREES. *</span>
+              </label>
+              <label>Autorisez-vous EcoPulse Foundation à utiliser des photos ou vidéos prises pendant le programme à des fins de communication ? *
+                <select name="mediaConsent" required>
+                  <option value="">Sélectionnez</option><option value="Oui">Oui</option><option value="Non">Non</option>
+                </select>
+                <span class="field-help">Répondre « Non » ne vous disqualifie pas.</span>
+              </label>
             </fieldset>
 
             <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
@@ -184,7 +228,9 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <a class="brand footer-brand brand-logo-link" href="index.html" aria-label="EcoPulse — accueil"><img class="site-logo footer-logo" src="assets/ecopulse-logo.png" alt="EcoPulse Foundation"></a>
+      <a class="brand footer-brand brand-logo-link" href="index.html" aria-label="EcoPulse — accueil">
+        <img class="site-logo footer-logo" src="assets/ecopulse-logo.png" alt="EcoPulse Foundation">
+      </a>
       <p>© <span id="year"></span> EcoPulse Foundation. Tous droits réservés.</p>
       <div class="socials">
         <a href="https://www.facebook.com/profile.php?id=61576944591762" target="_blank" rel="noopener noreferrer">Facebook</a>

@@ -1,37 +1,24 @@
-# EcoPulse Foundation — site indépendant de Wix
+# Updated TREES application system
 
-## Ouvrir dans VS Code
-1. Ouvrez le dossier `ecopulse-home` dans VS Code.
-2. Installez l’extension **Live Server**.
-3. Ouvrez `index.html` ou `programmes.html`.
-4. Faites un clic droit puis choisissez **Open with Live Server**.
+Replace in your website project:
+- application.html
+- js/application.js
 
-## Page Programmes
-La nouvelle page est `programmes.html`.
+Paste google-apps-script/Code.gs into:
+Google Sheet > Extensions > Apps Script
 
-Ajoutez ces images dans le dossier `assets` avec exactement ces noms :
+Then:
+1. Create a blank Google Sheet.
+2. Copy the ID between /d/ and /edit in its URL.
+3. Paste it into CONFIG.SPREADSHEET_ID in Code.gs.
+4. Deploy Apps Script as a Web app.
+5. Execute as: Me.
+6. Who has access: Anyone.
+7. Copy the deployment URL ending in /exec.
+8. Paste it into application.html as the form action.
+9. Test one application.
 
-- `programmes-hero.jpg` — grande photo avec les participants et leurs certificats.
-- `trees-silhouette.png` — silhouette végétale, idéalement un PNG transparent.
-- `trees-gallery-1.jpg` — présentation devant le groupe.
-- `trees-gallery-2.jpg` — participants assis pendant la formation.
-- `trees-gallery-3.jpg` — atelier collaboratif.
-- `trees-gallery-4.jpg` — travail en groupe.
-- `trees-gallery-5.jpg` — remise de certificat.
-- `programmes-cta.jpg` — photo sombre de nature utilisée derrière « Agissons maintenant ».
+The system saves each application to Google Sheets, emails EcoPulse with the subject:
+New TREES application received from [applicant name]
 
-Le code affiche des couleurs de remplacement tant que certaines images ne sont pas encore ajoutées.
-
-## Navigation
-Le lien **Programmes** de la page d’accueil mène maintenant à `programmes.html`. Le logo de la page Programmes retourne à `index.html`.
-
-
-## Page de candidature TREES
-
-La page `application.html` utilise Google Apps Script pour enregistrer les candidatures dans Google Sheets et les envoyer par courriel. Consultez `APPLICATION_SETUP.md` et `google-apps-script/Code.gs`.
-
-
-## Nouveaux fichiers visuels à ajouter
-- `assets/ecopulse-logo.png` — logo officiel affiché dans l’en-tête et le pied de page de toutes les pages.
-- `assets/about-event-1.jpg`, `about-event-2.jpg`, `about-event-3.jpg` — photos d’événements/panels pour le hero À Propos.
-- `assets/about-history-1.jpg`, `about-history-2.jpg`, `about-history-3.jpg` — photos retraçant l’histoire, le lancement et les activités avec les jeunes.
+It also sends a confirmation to the applicant in French or Haitian Creole, based on the selected language.
