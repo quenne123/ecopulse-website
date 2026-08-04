@@ -9,7 +9,7 @@
  * 6. Copy the /exec URL into application.html.
  */
 const CONFIG = {
-  SPREADSHEET_ID: 'PASTE_YOUR_GOOGLE_SHEET_ID_HERE',
+  SPREADSHEET_ID: 'https://docs.google.com/spreadsheets/d/1l3UAZ63jajfk50hKj8TAyVwn_A6GYJfOPnwcJ2a0dzs/edit?usp=sharing',
   SHEET_NAME: 'Candidatures TREES 2',
   NOTIFICATION_EMAIL: 'ecopulse.contact@gmail.com',
   SEND_APPLICANT_CONFIRMATION: true,
