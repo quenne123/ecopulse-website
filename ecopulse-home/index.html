@@ -19,12 +19,40 @@
       </a>
       <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
       <nav id="primary-nav" class="primary-nav" aria-label="Navigation principale">
-        <a href="index.html" class="active">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="/programmes/programmes.html">Programmes</a>
-        <a href="#actualites">Actualités</a>
-        <a href="application.html">Candidature TREES</a>
-        <a class="button button-small" href="https://gofund.me/3133bdc82" target="_blank" rel="noopener noreferrer">Faire un don</a>
+        <a href="/index.html">Accueil</a>
+        <a href="/about.html">À propos</a>
+        <div class="nav-dropdown">
+          <a class="nav-dropdown-link" href="/programmes/programmes.html">
+            Programmes
+          </a>
+          <button
+            class="nav-dropdown-toggle"
+            type="button"
+            aria-label="Afficher les initiatives"
+            aria-expanded="false"
+            aria-controls="programmes-submenu">
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="nav-submenu" id="programmes-submenu">
+            <a href="/programmes/trees.html">
+              Ateliers de Formation et de Sensibilisation
+            </a>
+            <a href="/programmes/programmes.html#assainissement">
+              Assainissement
+            </a>
+            <a href="/programmes/garden.html">
+              School Garden Project
+            </a>
+          </div>
+        </div>
+        <a href="/application.html">Candidature TREES</a>
+        <a
+          class="button button-small"
+          href="https://gofund.me/3133bdc82"
+          target="_blank"
+          rel="noopener noreferrer">
+          Faire un don
+        </a>
       </nav>
     </div>
   </header>
@@ -67,7 +95,7 @@
             <div class="program-body">
               <h3>Assainissement</h3>
               <p>Nous visons à améliorer les conditions sanitaires des communautés vulnérables à travers des actions de nettoyage et de gestion des déchets. Nous sensibilisons la population à l’importance de l’hygiène et travaillons à la mise en place d’infrastructures sanitaires de base.</p>
-              <a class="text-link" href="#contact">Devenir bénévole →</a>
+              <<a class="text-link" href="https://forms.gle/4gtNwTxYV9B4XttYA" target="_blank" rel="noopener noreferrer"> Devenir bénévole → </a>>
             </div>
           </article>
           <article class="program-card reveal">
