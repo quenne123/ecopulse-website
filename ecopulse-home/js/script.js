@@ -1,19 +1,111 @@
-const toggle=document.querySelector('.menu-toggle');const nav=document.querySelector('.primary-nav');toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));document.getElementById('year').textContent=new Date().getFullYear();const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.15});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));const counters=document.querySelectorAll('[data-count]');const countIO=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=Number(el.dataset.count);let n=0;const step=Math.max(1,Math.ceil(target/30));const timer=setInterval(()=>{n=Math.min(target,n+step);el.textContent=n;if(n===target)clearInterval(timer)},40);countIO.unobserve(el)}),{threshold:.5});counters.forEach(el=>countIO.observe(el));
 
-/* PROGRAMMES DROPDOWN */
+/* MOBILE NAVIGATION */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".primary-nav");
+
+menuToggle?.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(open));
+});
+
+nav?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("open");
+    menuToggle?.setAttribute("aria-expanded", "false");
+  });
+});
+
+/* FOOTER YEAR */
+
+const year = document.getElementById("year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+/* SCROLL REVEAL ANIMATIONS */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+} else {
+  revealElements.forEach((element) => {
+    element.classList.add("visible");
+  });
+}
+
+/* ANIMATED COUNTERS */
+
+const counters = document.querySelectorAll("[data-count]");
+
+if ("IntersectionObserver" in window) {
+  const countObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const element = entry.target;
+        const target = Number(element.dataset.count);
+
+        let current = 0;
+
+        const step = Math.max(1, Math.ceil(target / 30));
+
+        const timer = setInterval(() => {
+          current = Math.min(target, current + step);
+          element.textContent = current;
+
+          if (current === target) {
+            clearInterval(timer);
+          }
+        }, 40);
+
+        countObserver.unobserve(element);
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((element) => {
+    countObserver.observe(element);
+  });
+} else {
+  counters.forEach((element) => {
+    element.textContent = element.dataset.count;
+  });
+}
+
+/* PROGRAMMES DROPDOWN — CLICK ONLY */
 
 document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
-  const toggle = dropdown.querySelector(".nav-dropdown-toggle");
+  const dropdownToggle = dropdown.querySelector(".nav-dropdown-toggle");
 
-  if (!toggle) return;
+  if (!dropdownToggle) return;
 
   function setOpen(open) {
     dropdown.classList.toggle("is-open", open);
-    toggle.setAttribute("aria-expanded", String(open));
+    dropdownToggle.setAttribute("aria-expanded", String(open));
   }
 
-  toggle.addEventListener("click", (event) => {
+  dropdownToggle.addEventListener("click", (event) => {
     event.stopPropagation();
+
     setOpen(!dropdown.classList.contains("is-open"));
   });
 
@@ -26,7 +118,7 @@ document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
   dropdown.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setOpen(false);
-      toggle.focus();
+      dropdownToggle.focus();
     }
   });
 });
