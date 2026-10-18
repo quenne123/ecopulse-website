@@ -122,3 +122,48 @@ document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
     }
   });
 });
+
+
+/* ENGLISH / FRENCH LANGUAGE SWITCHER */
+
+(function () {
+  const pathname = window.location.pathname;
+  const isFrench = pathname === "/fr" || pathname.startsWith("/fr/");
+
+  let englishPath = isFrench
+    ? pathname.replace(/^\/fr(?=\/|$)/, "") || "/index.html"
+    : pathname;
+
+  if (englishPath === "/") {
+    englishPath = "/index.html";
+  }
+
+  const frenchPath = "/fr" + englishPath;
+
+  document.querySelectorAll(".language-switcher").forEach((switcher) => {
+    const englishLink = switcher.querySelector('[data-lang="en"]');
+    const frenchLink = switcher.querySelector('[data-lang="fr"]');
+
+    if (englishLink) {
+      englishLink.href = englishPath + window.location.search;
+      englishLink.classList.toggle("active", !isFrench);
+
+      if (!isFrench) {
+        englishLink.setAttribute("aria-current", "page");
+      } else {
+        englishLink.removeAttribute("aria-current");
+      }
+    }
+
+    if (frenchLink) {
+      frenchLink.href = frenchPath + window.location.search;
+      frenchLink.classList.toggle("active", isFrench);
+
+      if (isFrench) {
+        frenchLink.setAttribute("aria-current", "page");
+      } else {
+        frenchLink.removeAttribute("aria-current");
+      }
+    }
+  });
+})();
