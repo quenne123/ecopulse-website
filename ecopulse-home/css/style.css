@@ -178,7 +178,10 @@ img{max-width:100%;display:block}
 .trees-program-logo{display:block;width:100%;height:auto;max-height:390px;object-fit:contain;border-radius:20px}
 .trees-copy{text-align:left}
 .trees-copy .eyebrow{margin:0 0 .75rem;color:var(--green);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-.trees-copy h2{margin:0;font-size:clamp(3rem,5.8vw,5.6rem);line-height:.9;letter-spacing:-.065em;text-transform:uppercase}
+
+/* Shared TREES and School Garden H1/H2 heading styles */
+.trees-copy h1,.trees-copy h2{margin:0;font-size:clamp(3rem,5.8vw,5.6rem);line-height:.9;letter-spacing:-.065em;text-transform:uppercase}
+
 .trees-acronym{max-width:700px;margin:1rem 0 0;color:var(--orange);font-size:clamp(1.05rem,1.9vw,1.42rem);line-height:1.18;font-weight:800}
 .trees-description{margin-top:30px;display:grid;gap:1rem}
 .trees-description p{font-size:.96rem;line-height:1.75;margin:0;color:#303532}
@@ -232,7 +235,6 @@ img{max-width:100%;display:block}
   .gallery-image{min-height:240px}
 }
 
-
 /* Fluid TREES section responsive refinements */
 @media (max-width:900px){
   .trees-overview{grid-template-columns:1fr;gap:46px;max-width:760px;margin:auto}
@@ -248,12 +250,16 @@ img{max-width:100%;display:block}
   .pillar-number{right:0;top:-8px}
   .trees-pillar h3,.trees-pillar p{max-width:none}
 }
+
 @media (max-width:600px){
   .trees-intro{padding:62px 0 72px}
   .trees-overview{gap:34px}
   .trees-logo-frame{padding:10px;border-radius:22px;transform:none}
   .trees-logo-panel:before{left:-12px;bottom:-12px;border-radius:25px}
-  .trees-copy h2{font-size:clamp(2.55rem,14vw,4rem)}
+
+  /* Shared responsive heading styles */
+  .trees-copy h1,.trees-copy h2{font-size:clamp(2.55rem,14vw,4rem)}
+
   .trees-description p{font-size:.9rem;line-height:1.65}
   .trees-journey{margin-top:48px;gap:30px}
   .trees-pillar{padding-left:88px}
@@ -261,7 +267,6 @@ img{max-width:100%;display:block}
   .journey-line{left:30px;top:30px;bottom:30px}
   .pillar-number{font-size:3.6rem}
 }
-
 
 /* APPLICATION PAGE */
 .application-page{background:#f7f8f4}
@@ -328,6 +333,7 @@ img{max-width:100%;display:block}
   .application-layout{grid-template-columns:1fr;gap:42px}
   .application-aside{position:static;max-width:760px}
 }
+
 @media(max-width:650px){
   .application-hero{padding:62px 0}
   .application-highlights{grid-template-columns:1fr}
@@ -424,10 +430,12 @@ img{max-width:100%;display:block}
   .board-card{grid-template-columns:170px 1fr}.about-principles{grid-template-columns:1fr}.about-principles article+article{border-left:0;border-top:1px solid #dfe6e1}
   .values-ribbon{grid-template-columns:repeat(2,1fr)}.values-ribbon article:nth-child(3){border-left:0;border-top:1px solid #e5e8e5}.values-ribbon article:nth-child(4){border-top:1px solid #e5e8e5}
 }
+
 @media(max-width:800px){
   .about-story-grid,.board-heading{grid-template-columns:1fr;gap:28px}.board-grid{grid-template-columns:1fr}.partner-grid{grid-template-columns:repeat(2,1fr)}
   .partner-callout{align-items:flex-start;flex-direction:column}.about-story{padding:78px 0}.board-section{padding:80px 0}.about-values{padding:76px 0}
 }
+
 @media(max-width:600px){
   .about-hero{padding:70px 0 72px;min-height:auto}.about-hero h1{font-size:clamp(3rem,15vw,4.6rem)}.about-hero-visual{min-height:480px}
   .pulse-card{width:215px;padding:20px}.pulse-card-main{left:0;top:145px}.pulse-card-top{right:0}.pulse-card-bottom{right:0;bottom:0}
@@ -435,7 +443,6 @@ img{max-width:100%;display:block}
   .board-card{grid-template-columns:1fr}.board-photo{min-height:330px}.partner-grid{grid-template-columns:1fr 1fr}.partner-logo{height:110px;padding:16px}
   .about-quote{padding:70px 0}.partner-callout{padding:25px}
 }
-
 
 /* SHARED ECOPULSE LOGO */
 .brand-logo-link{display:inline-flex;align-items:center;width:max-content;line-height:0}
@@ -454,7 +461,7 @@ img{max-width:100%;display:block}
 .about-photo-note strong,.about-photo-note span{display:block}.about-photo-note strong{font-size:1.05rem}.about-photo-note span{font-size:.61rem;margin-top:2px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
 
 .history-section{position:relative;background:linear-gradient(145deg,#f7f3e9 0%,#fff 68%);padding:112px 0}
-.history-section:before{content:"";position:absolute;width:300px;height:300px;left:-150px;bottom:-130px;border-radius:50%;border:55px solid rgba(7,133,95,.06)}
+.history-section:before{content:"";position:absolute;width:300px;height:300px;left:-150px;bottom:-130px;border-radius:50px;border:55px solid rgba(7,133,95,.06)}
 .history-grid{position:relative;display:grid;grid-template-columns:1fr 1.08fr;gap:88px;align-items:center}
 .history-gallery{position:relative;min-height:570px}
 .history-photo{position:absolute;margin:0;overflow:hidden;background:#dfe8e1;border:8px solid #fff;box-shadow:0 24px 60px rgba(23,66,52,.15)}
@@ -472,6 +479,7 @@ img{max-width:100%;display:block}
   .about-photo-collage{width:min(100%,650px);margin:auto}
   .history-grid{grid-template-columns:1fr;gap:46px}.history-gallery{width:min(100%,680px);margin:auto}
 }
+
 @media(max-width:600px){
   .about-photo-collage{min-height:420px}.about-photo-main{width:78%;height:310px;top:54px}.about-photo-top{width:48%;height:170px}.about-photo-bottom{width:48%;height:165px}.about-photo-note{left:10px;bottom:0;padding:13px 16px}
   .history-section{padding:72px 0}.history-gallery{min-height:430px}.history-photo-large{width:78%;height:315px}.history-photo:nth-child(2){width:48%;height:175px}.history-photo:nth-child(3){width:54%;height:195px}
