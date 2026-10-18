@@ -4,166 +4,145 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".primary-nav");
 
+function closeMenu() {
+  nav?.classList.remove("open");
+  menuToggle?.setAttribute("aria-expanded", "false");
+}
+
 menuToggle?.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
+  const open = nav?.classList.toggle("open") ?? false;
   menuToggle.setAttribute("aria-expanded", String(open));
 });
 
-nav?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-  });
+nav?.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", closeMenu);
 });
+
 
 /* FOOTER YEAR */
 
 const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
 
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
 
 /* SCROLL REVEAL ANIMATIONS */
 
 const revealElements = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
 
-  revealElements.forEach((element) => {
-    revealObserver.observe(element);
-  });
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+
+  revealElements.forEach(element => observer.observe(element));
 } else {
-  revealElements.forEach((element) => {
-    element.classList.add("visible");
-  });
+  revealElements.forEach(element => element.classList.add("visible"));
 }
+
 
 /* ANIMATED COUNTERS */
 
 const counters = document.querySelectorAll("[data-count]");
 
+function animateCounter(element) {
+  const target = Number(element.dataset.count);
+  const step = Math.max(1, Math.ceil(target / 30));
+  let current = 0;
+
+  const timer = setInterval(() => {
+    current = Math.min(target, current + step);
+    element.textContent = current;
+
+    if (current >= target) clearInterval(timer);
+  }, 40);
+}
+
 if ("IntersectionObserver" in window) {
-  const countObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
 
-        const element = entry.target;
-        const target = Number(element.dataset.count);
+      animateCounter(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
 
-        let current = 0;
-
-        const step = Math.max(1, Math.ceil(target / 30));
-
-        const timer = setInterval(() => {
-          current = Math.min(target, current + step);
-          element.textContent = current;
-
-          if (current === target) {
-            clearInterval(timer);
-          }
-        }, 40);
-
-        countObserver.unobserve(element);
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  counters.forEach((element) => {
-    countObserver.observe(element);
-  });
+  counters.forEach(element => observer.observe(element));
 } else {
-  counters.forEach((element) => {
+  counters.forEach(element => {
     element.textContent = element.dataset.count;
   });
 }
 
-/* PROGRAMMES DROPDOWN — CLICK ONLY */
 
-document.querySelectorAll(".nav-dropdown").forEach((dropdown) => {
-  const dropdownToggle = dropdown.querySelector(".nav-dropdown-toggle");
+/* PROGRAMS DROPDOWN */
 
-  if (!dropdownToggle) return;
+document.querySelectorAll(".nav-dropdown").forEach(dropdown => {
+  const toggle = dropdown.querySelector(".nav-dropdown-toggle");
+  if (!toggle) return;
 
   function setOpen(open) {
     dropdown.classList.toggle("is-open", open);
-    dropdownToggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-expanded", String(open));
   }
 
-  dropdownToggle.addEventListener("click", (event) => {
+  toggle.addEventListener("click", event => {
     event.stopPropagation();
-
     setOpen(!dropdown.classList.contains("is-open"));
   });
 
-  document.addEventListener("click", (event) => {
-    if (!dropdown.contains(event.target)) {
+  document.addEventListener("click", event => {
+    if (!dropdown.contains(event.target)) setOpen(false);
+  });
+
+  dropdown.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
       setOpen(false);
+      toggle.focus();
     }
   });
 
-  dropdown.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      setOpen(false);
-      dropdownToggle.focus();
-    }
+  dropdown.querySelectorAll(".nav-submenu a").forEach(link => {
+    link.addEventListener("click", () => setOpen(false));
   });
 });
 
 
 /* ENGLISH / FRENCH LANGUAGE SWITCHER */
 
-(function () {
-  const pathname = window.location.pathname;
-  const isFrench = pathname === "/fr" || pathname.startsWith("/fr/");
+const pathname = window.location.pathname;
+const isFrench = pathname === "/fr" || pathname.startsWith("/fr/");
 
-  let englishPath = isFrench
-    ? pathname.replace(/^\/fr(?=\/|$)/, "") || "/index.html"
-    : pathname;
+let englishPath = isFrench
+  ? pathname.replace(/^\/fr(?=\/|$)/, "") || "/index.html"
+  : pathname;
 
-  if (englishPath === "/") {
-    englishPath = "/index.html";
-  }
+if (englishPath === "/") englishPath = "/index.html";
 
-  const frenchPath = "/fr" + englishPath;
+const paths = {
+  en: englishPath,
+  fr: "/fr" + englishPath
+};
 
-  document.querySelectorAll(".language-switcher").forEach((switcher) => {
-    const englishLink = switcher.querySelector('[data-lang="en"]');
-    const frenchLink = switcher.querySelector('[data-lang="fr"]');
+document.querySelectorAll(".language-switcher").forEach(switcher => {
+  switcher.querySelectorAll("[data-lang]").forEach(link => {
+    const language = link.dataset.lang;
+    if (!paths[language]) return;
 
-    if (englishLink) {
-      englishLink.href = englishPath + window.location.search;
-      englishLink.classList.toggle("active", !isFrench);
+    link.href = paths[language] + window.location.search;
 
-      if (!isFrench) {
-        englishLink.setAttribute("aria-current", "page");
-      } else {
-        englishLink.removeAttribute("aria-current");
-      }
-    }
+    const active = language === (isFrench ? "fr" : "en");
+    link.classList.toggle("active", active);
 
-    if (frenchLink) {
-      frenchLink.href = frenchPath + window.location.search;
-      frenchLink.classList.toggle("active", isFrench);
-
-      if (isFrench) {
-        frenchLink.setAttribute("aria-current", "page");
-      } else {
-        frenchLink.removeAttribute("aria-current");
-      }
+    if (active) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
     }
   });
-})();
+});

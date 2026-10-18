@@ -1,113 +1,153 @@
+
 (() => {
-  const form = document.querySelector('#trees-application-form');
+  const form = document.querySelector("#trees-application-form");
   if (!form) return;
 
-  const status = document.querySelector('#form-status');
-  const frame = document.querySelector('#submission-frame');
+  const get = id => document.getElementById(id);
+
+  const status = get("form-status");
+  const frame = get("submission-frame");
   const submitButton = form.querySelector('button[type="submit"]');
-  const birthDate = document.querySelector('#birth-date');
-  const ageField = document.querySelector('#calculated-age');
-  const minorSection = document.querySelector('#minor-section');
-  const guardianName = document.querySelector('#guardian-name');
-  const guardianPhone = document.querySelector('#guardian-phone');
-  const guardianConsent = document.querySelector('#guardian-consent');
-  const hasExperience = document.querySelector('#has-experience');
-  const experienceWrapper = document.querySelector('#experience-details-wrapper');
-  const experienceDetails = document.querySelector('#experience-details');
-  const jeremieResident = document.querySelector('#jeremie-resident');
-  const travelWrapper = document.querySelector('#travel-wrapper');
-  const canTravel = document.querySelector('#can-travel');
+
+  const birthDate = get("birth-date");
+  const ageField = get("calculated-age");
+  const minorSection = get("minor-section");
+  const guardianName = get("guardian-name");
+  const guardianPhone = get("guardian-phone");
+  const guardianConsent = get("guardian-consent");
+
+  const hasExperience = get("has-experience");
+  const experienceWrapper = get("experience-details-wrapper");
+  const experienceDetails = get("experience-details");
+
+  const jeremieResident = get("jeremie-resident");
+  const travelWrapper = get("travel-wrapper");
+  const canTravel = get("can-travel");
+
+  const isFrench = document.documentElement.lang.toLowerCase().startsWith("fr");
+
+  const messages = {
+    en: {
+      configuration: "The application form is not connected. Please configure the Google Apps Script endpoint.",
+      invalid: "Please complete all required fields before continuing.",
+      sending: "Submitting your application securely…",
+      success: "Your application has been submitted. A confirmation email will be sent to you.",
+      submit: "Submit Application"
+    },
+    fr: {
+      configuration: "Le formulaire n'est pas encore connecté. Veuillez configurer l'URL Google Apps Script.",
+      invalid: "Veuillez vérifier les champs obligatoires avant de continuer.",
+      sending: "Transmission sécurisée de votre candidature…",
+      success: "Votre candidature a bien été envoyée. Un courriel de confirmation vous sera transmis.",
+      submit: "Envoyer ma candidature"
+    }
+  }[isFrench ? "fr" : "en"];
 
   let submitted = false;
 
-  const setStatus = (message, type = '') => {
+  function setStatus(message, type = "") {
     status.textContent = message;
     status.className = `form-status ${type}`.trim();
-  };
+  }
 
-  const calculateAge = (dateString) => {
-    if (!dateString) return null;
-    const birth = new Date(`${dateString}T00:00:00`);
+  function calculateAge(value) {
+    if (!value) return null;
+
+    const birth = new Date(`${value}T00:00:00`);
     if (Number.isNaN(birth.getTime())) return null;
+
     const today = new Date();
     let age = today.getFullYear() - birth.getFullYear();
-    const monthDifference = today.getMonth() - birth.getMonth();
-    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birth.getDate())) age -= 1;
+
+    if (
+      today.getMonth() < birth.getMonth() ||
+      (today.getMonth() === birth.getMonth() &&
+        today.getDate() < birth.getDate())
+    ) age--;
+
     return age;
-  };
+  }
 
-  const updateMinorFields = () => {
+  function toggleFields(wrapper, fields, show) {
+    wrapper.hidden = !show;
+
+    fields.forEach(field => {
+      field.required = show;
+
+      if (!show) {
+        if (field.type === "checkbox") field.checked = false;
+        else field.value = "";
+      }
+    });
+  }
+
+  function updateFields() {
     const age = calculateAge(birthDate.value);
-    ageField.value = age === null ? '' : String(age);
-    const isMinor = age !== null && age < 18;
-    minorSection.hidden = !isMinor;
-    guardianName.required = isMinor;
-    guardianPhone.required = isMinor;
-    guardianConsent.required = isMinor;
-    if (!isMinor) {
-      guardianName.value = '';
-      guardianPhone.value = '';
-      guardianConsent.checked = false;
-    }
-  };
+    ageField.value = age ?? "";
 
-  const updateExperienceField = () => {
-    const show = hasExperience.value === 'Oui';
-    experienceWrapper.hidden = !show;
-    experienceDetails.required = show;
-    if (!show) experienceDetails.value = '';
-  };
+    toggleFields(
+      minorSection,
+      [guardianName, guardianPhone, guardianConsent],
+      age !== null && age < 18
+    );
 
-  const updateTravelField = () => {
-    const show = jeremieResident.value === 'Non';
-    travelWrapper.hidden = !show;
-    canTravel.required = show;
-    if (!show) canTravel.value = '';
-  };
+    toggleFields(
+      experienceWrapper,
+      [experienceDetails],
+      hasExperience.value === "Oui"
+    );
 
-  birthDate.addEventListener('change', updateMinorFields);
-  hasExperience.addEventListener('change', updateExperienceField);
-  jeremieResident.addEventListener('change', updateTravelField);
+    toggleFields(
+      travelWrapper,
+      [canTravel],
+      jeremieResident.value === "Non"
+    );
+  }
 
-  form.addEventListener('submit', (event) => {
-    updateMinorFields();
-    updateExperienceField();
-    updateTravelField();
+  [birthDate, hasExperience, jeremieResident].forEach(field => {
+    field.addEventListener("change", updateFields);
+  });
 
-    const endpoint = form.getAttribute('action') || '';
-    if (endpoint.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
+  form.addEventListener("submit", event => {
+    updateFields();
+
+    const endpoint = form.getAttribute("action") || "";
+
+    if (!endpoint || endpoint.includes("YOUR_GOOGLE_APPS_SCRIPT")) {
       event.preventDefault();
-      setStatus("Le formulaire n'est pas encore connecté. Remplacez l’URL dans l’attribut action de application.html par votre URL Google Apps Script se terminant par /exec.", 'error');
+      setStatus(messages.configuration, "error");
       return;
     }
 
     if (!form.checkValidity()) {
       event.preventDefault();
       form.reportValidity();
-      setStatus('Veuillez vérifier les champs obligatoires avant de continuer.', 'error');
+      setStatus(messages.invalid, "error");
       return;
     }
 
     submitted = true;
     submitButton.disabled = true;
-    submitButton.textContent = 'Envoi en cours…';
-    setStatus('Transmission sécurisée de votre candidature…', 'pending');
+    submitButton.textContent = messages.sending;
+    setStatus(messages.sending, "pending");
   });
 
-  frame.addEventListener('load', () => {
+  frame.addEventListener("load", () => {
     if (!submitted) return;
-    setStatus('Votre candidature a bien été envoyée. Un courriel de confirmation vous sera transmis.', 'success');
+
+    setStatus(messages.success, "success");
     form.reset();
-    updateMinorFields();
-    updateExperienceField();
-    updateTravelField();
+    updateFields();
+
     submitButton.disabled = false;
-    submitButton.textContent = 'Envoyer ma candidature';
+    submitButton.textContent = messages.submit;
     submitted = false;
-    status.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    status.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
   });
 
-  updateMinorFields();
-  updateExperienceField();
-  updateTravelField();
+  updateFields();
 })();
