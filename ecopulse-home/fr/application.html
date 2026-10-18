@@ -8,22 +8,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
   <header class="site-header" id="top">
     <div class="container nav-wrap">
-      <a class="brand brand-logo-link" href="index.html" aria-label="EcoPulse — accueil">
-        <img class="site-logo" src="assets/ecopulse-logo.png" alt="EcoPulse Foundation">
+      <a class="brand brand-logo-link" href="/fr/index.html" aria-label="EcoPulse — accueil">
+        <img class="site-logo" src="/assets/ecopulse-logo.png" alt="EcoPulse Foundation">
       </a>
       <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
       <nav id="primary-nav" class="primary-nav" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="about.html">À propos</a>
-        <a href="programmes.html">Programmes</a>
-        <a href="index.html#actualites">Actualités</a>
-        <a href="application.html" class="active">Candidature TREES</a>
+        <a href="/fr/index.html">Accueil</a>
+        <a href="/fr/about.html">À propos</a>
+        <div class="nav-dropdown">
+          <a class="nav-dropdown-link" href="/fr/programmes/programmes.html">Programmes</a>
+          <button class="nav-dropdown-toggle" type="button" aria-label="Afficher les initiatives" aria-expanded="false" aria-controls="programmes-submenu"><span aria-hidden="true">⌄</span></button>
+          <div class="nav-submenu" id="programmes-submenu">
+            <a href="/fr/programmes/trees.html">Ateliers de formation et de sensibilisation</a>
+            <a href="https://forms.gle/4gtNwTxYV9B4XttYA" target="_blank" rel="noopener noreferrer">Assainissement communautaire</a>
+            <a href="/fr/programmes/garden.html">Projet de jardin scolaire</a>
+          </div>
+        </div>
+        <a href="/fr/application.html" class="active" aria-current="page">Candidature TREES</a>
+        <div class="language-switcher" aria-label="Select language">
+          <a href="#" class="lang-link" data-lang="en" lang="en" aria-label="English">EN</a>
+          <span class="lang-divider" aria-hidden="true">/</span>
+          <a href="#" class="lang-link" data-lang="fr" lang="fr" aria-label="Français">FR</a>
+        </div>
         <a class="button button-small" href="https://gofund.me/3133bdc82" target="_blank" rel="noopener noreferrer">Faire un don</a>
       </nav>
     </div>
@@ -45,7 +57,7 @@
           </div>
         </div>
         <div class="application-logo-card reveal">
-          <img src="assets/trees-logo.png" alt="Logo du programme TREES">
+          <img src="/assets/trees-logo.png" alt="Logo du programme TREES">
           <p>Training for a Resilient Environment and Empowered Solutions</p>
         </div>
       </div>
@@ -255,8 +267,8 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <a class="brand footer-brand brand-logo-link" href="index.html" aria-label="EcoPulse — accueil">
-        <img class="site-logo footer-logo" src="assets/ecopulse-logo.png" alt="EcoPulse Foundation">
+      <a class="brand footer-brand brand-logo-link" href="/fr/index.html" aria-label="EcoPulse — accueil">
+        <img class="site-logo footer-logo" src="/assets/ecopulse-logo.png" alt="EcoPulse Foundation">
       </a>
       <p>© <span id="year"></span> EcoPulse Foundation. Tous droits réservés.</p>
       <div class="socials">
@@ -268,7 +280,7 @@
   </footer>
 
   <a class="back-to-top" href="#top" aria-label="Retour en haut">↑</a>
-  <script src="js/script.js"></script>
-  <script src="js/application.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/application.js"></script>
 </body>
 </html>
