@@ -67,7 +67,7 @@ img{max-width:100%;display:block}
 .program-card{background:#fff;box-shadow:var(--shadow);overflow:hidden}
 .program-image{height:245px;background-size:cover;background-position:center}
 .image-training{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.05)),url('../assets/trees.jpg'),linear-gradient(135deg,#9fd0eb,#6aa8d2)}
-.image-garden{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.05)),url('../assets/garden.jpg'),linear-gradient(135deg,#a8d5a2,#4d9469)}
+.image-garden{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.05)),url('../assets/school-garden.jpg'),linear-gradient(135deg,#a8d5a2,#4d9469)}
 .image-cleanup{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)),url('../assets/cleanup.jpg'),linear-gradient(135deg,#9b9f9d,#555)}
 .program-card:first-child .program-body{border-top:8px solid var(--blue)}
 .program-card:last-child .program-body{border-top:8px solid var(--black)}
@@ -523,4 +523,387 @@ img{max-width:100%;display:block}
   .history-photo:nth-child(3){width:54%;height:195px}
   .nonprofit-status{grid-template-columns:1fr;text-align:center}
   .status-mark{margin:auto}
+}
+
+
+/* ==========================================
+   SCHOOL GARDEN PROJECT
+   ========================================== */
+
+.garden-page{
+  --garden-green:#247a50;
+  --garden-dark:#174c37;
+  --garden-light:#edf5e9;
+}
+
+/* INTRODUCTION */
+
+.garden-intro{
+  background:linear-gradient(
+    145deg,
+    #f7faf4 0%,
+    #ffffff 55%,
+    #eef5e9 100%
+  );
+}
+
+.garden-logo-frame{
+  background:#fff;
+  border:1px solid rgba(36,122,80,.13);
+}
+
+.garden-project-logo{
+  width:100%;
+  max-height:390px;
+  object-fit:contain;
+}
+
+.garden-status{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:7px 13px;
+  border-radius:999px;
+  background:#e3f2e4;
+  color:var(--garden-dark);
+  font-size:.67rem;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.garden-page .trees-copy h1{
+  font-size:clamp(2.7rem,5.4vw,5.2rem);
+}
+
+.garden-tagline{
+  color:var(--garden-green);
+}
+
+/* PROJECT PURPOSE */
+
+.garden-purpose{
+  background:#fff;
+  padding:100px 0;
+}
+
+.garden-purpose-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:80px;
+  align-items:start;
+}
+
+.garden-purpose .section-kicker{
+  color:var(--garden-green);
+}
+
+.garden-purpose h2{
+  font-size:clamp(2.4rem,4.5vw,4.5rem);
+  line-height:1.05;
+  max-width:500px;
+}
+
+.garden-purpose-copy p{
+  font-size:.93rem;
+  line-height:1.8;
+  color:#4b554d;
+  margin:0 0 20px;
+}
+
+/* OBJECTIVES */
+
+.garden-objectives{
+  background:#f3f7ef;
+  padding:100px 0 110px;
+}
+
+.garden-section-heading{
+  max-width:760px;
+  margin:0 auto 55px;
+  text-align:center;
+}
+
+.garden-section-heading .section-kicker{
+  color:var(--garden-green);
+}
+
+.garden-section-heading h2{
+  font-size:clamp(2.5rem,4.8vw,4.7rem);
+  margin:.4rem 0 1rem;
+}
+
+.garden-section-heading>p:last-child{
+  font-size:.9rem;
+  line-height:1.7;
+  color:#58645b;
+}
+
+.garden-objectives-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+}
+
+.garden-objective{
+  position:relative;
+  min-height:270px;
+  padding:32px 28px;
+  background:#fff;
+  border:1px solid #e0eadf;
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(26,75,49,.06);
+  overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+
+.garden-objective:hover{
+  transform:translateY(-5px);
+  box-shadow:0 20px 45px rgba(26,75,49,.12);
+}
+
+.garden-objective-number{
+  position:absolute;
+  top:15px;
+  right:20px;
+  color:#e0ede0;
+  font-size:3.2rem;
+  font-weight:800;
+  line-height:1;
+}
+
+.garden-objective-icon{
+  position:relative;
+  width:54px;
+  height:54px;
+  display:grid;
+  place-items:center;
+  margin-bottom:22px;
+  border-radius:15px;
+  background:#e9f5e7;
+  font-size:1.6rem;
+}
+
+.garden-objective h3{
+  position:relative;
+  margin:0 0 12px;
+  font-size:1.08rem;
+  line-height:1.25;
+  color:var(--garden-dark);
+}
+
+.garden-objective p{
+  position:relative;
+  margin:0;
+  font-size:.8rem;
+  line-height:1.7;
+  color:#576159;
+}
+
+/* TARGET PARTICIPANTS */
+
+.garden-participants{
+  padding:105px 0;
+  background:#fff;
+}
+
+.garden-participants-grid{
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:85px;
+  align-items:center;
+}
+
+.garden-participants-highlight{
+  min-height:340px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:30px;
+  background:linear-gradient(
+    145deg,
+    #1c704b,
+    #7abf69
+  );
+  color:#fff;
+  text-align:center;
+  box-shadow:0 24px 55px rgba(24,93,59,.16);
+}
+
+.garden-participants-age{
+  font-size:clamp(4.5rem,9vw,7rem);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-.08em;
+}
+
+.garden-participants-unit{
+  font-size:1.5rem;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.garden-participants-highlight p{
+  margin:18px 0 0;
+  font-size:.82rem;
+  font-weight:700;
+}
+
+.garden-participants .section-kicker{
+  color:var(--garden-green);
+}
+
+.garden-participants h2{
+  font-size:clamp(2.5rem,4.5vw,4.5rem);
+  line-height:1.05;
+}
+
+.garden-participants-grid>div:last-child>p:not(.section-kicker){
+  font-size:.9rem;
+  line-height:1.8;
+  color:#4d574f;
+}
+
+/* IMPLEMENTATION STEPS */
+
+.garden-approach{
+  padding:100px 0 110px;
+  background:#faf8f1;
+}
+
+.garden-steps{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+}
+
+.garden-step{
+  padding:30px 24px;
+  border-top:4px solid var(--garden-green);
+  background:#fff;
+  box-shadow:0 12px 30px rgba(0,0,0,.04);
+}
+
+.garden-step span{
+  display:block;
+  color:var(--garden-green);
+  font-size:2.4rem;
+  line-height:1;
+  font-weight:800;
+  margin-bottom:22px;
+}
+
+.garden-step h3{
+  font-size:1.08rem;
+  line-height:1.25;
+  margin:0 0 13px;
+}
+
+.garden-step p{
+  font-size:.78rem;
+  line-height:1.7;
+  color:#5a625c;
+  margin:0;
+}
+
+/* CALL TO ACTION */
+
+.garden-page .garden-cta{
+  min-height:350px;
+  background:linear-gradient(
+    120deg,
+    #123e2d,
+    #348258
+  );
+}
+
+.garden-page .garden-cta .programmes-cta-overlay{
+  background:linear-gradient(
+    90deg,
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.05)
+  );
+}
+
+.garden-page .garden-cta .programmes-cta-content{
+  min-height:350px;
+  max-width:760px;
+}
+
+.garden-cta-kicker{
+  margin:0 0 15px!important;
+  color:#d8edc8;
+  font-size:.68rem!important;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.garden-page .garden-cta h2{
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:1.05;
+}
+
+.garden-page .garden-cta .programmes-cta-content>p:not(.garden-cta-kicker){
+  max-width:560px;
+  font-size:.9rem;
+  line-height:1.6;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .garden-purpose-grid,
+  .garden-participants-grid{
+    grid-template-columns:1fr;
+    gap:38px;
+  }
+
+  .garden-objectives-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .garden-steps{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .garden-participants-highlight{
+    min-height:260px;
+  }
+}
+
+@media(max-width:600px){
+
+  .garden-purpose,
+  .garden-objectives,
+  .garden-participants,
+  .garden-approach{
+    padding:65px 0;
+  }
+
+  .garden-objectives-grid,
+  .garden-steps{
+    grid-template-columns:1fr;
+  }
+
+  .garden-section-heading{
+    margin-bottom:35px;
+  }
+
+  .garden-objective{
+    min-height:auto;
+  }
+
+  .garden-page .trees-copy h1{
+    font-size:clamp(2.5rem,12vw,3.7rem);
+  }
+
+  .garden-participants-highlight{
+    min-height:230px;
+  }
+
+  .garden-page .garden-cta{
+    padding:25px 0;
+  }
 }
