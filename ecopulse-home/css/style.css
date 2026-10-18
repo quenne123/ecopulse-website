@@ -915,3 +915,19 @@ img{max-width:100%;display:block}
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+/* School Garden Project logo */
+.garden-page .garden-logo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.garden-page .garden-project-logo {
+  display: block;
+  width: 100%;
+  max-width: 390px;
+  height: auto;
+  object-fit: contain;
+}
