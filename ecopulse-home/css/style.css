@@ -907,3 +907,11 @@ img{max-width:100%;display:block}
     padding:25px 0;
   }
 }
+
+/* School Garden image fix */
+.programmes-page .program-image.image-garden {
+    background-image: url('../assets/school-garden.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
