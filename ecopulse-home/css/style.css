@@ -69,8 +69,9 @@ img{max-width:100%;display:block}
 .image-training{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.05)),url('../assets/trees.jpg'),linear-gradient(135deg,#9fd0eb,#6aa8d2)}
 .image-garden{background-image:linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.05)),url('../assets/school-garden.jpg'),linear-gradient(135deg,#a8d5a2,#4d9469)}
 .image-cleanup{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1)),url('../assets/cleanup.jpg'),linear-gradient(135deg,#9b9f9d,#555)}
-.program-card:first-child .program-body{border-top:8px solid var(--blue)}
-.program-card:last-child .program-body{border-top:8px solid var(--black)}
+.program-card:nth-child(1) .program-body {border-top: 8px solid var(--blue);}
+.program-card:nth-child(2) .program-body {border-top: 8px solid var(--black);}
+.program-card:nth-child(3) .program-body {border-top: 8px solid var(--green);}
 .program-body{padding:24px 26px 26px}
 .program-body h3{font-size:1.22rem;line-height:1.15;margin:0 0 .9rem;font-weight:800}
 .program-body p{font-size:.82rem;color:var(--muted);margin:0 0 1rem}
